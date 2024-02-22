@@ -28,6 +28,12 @@ const RandomColor = () => {
     }
     console.log(color)
 
+    const handleColorType = (color) =>{
+        setColorType(color)
+        color === 'hex'? setColor('#000000'):setColor('rgb(20,0,0)')
+
+    }
+
   return (
     <div>
         <div style={{
@@ -35,8 +41,8 @@ const RandomColor = () => {
             width:'100vh',
             background: color
         }}>
-            <button onClick={() => setColorType('hex')}>Hex Color</button>
-            <button onClick={() => setColorType('rgb')}>RGB color</button>
+            <button onClick={() => handleColorType('hex')}>Hex Color</button>
+            <button onClick={() => handleColorType('rgb')}>RGB color</button>
             <button style={{
                 padding:'2em',
                 margin:'20%'
@@ -47,8 +53,11 @@ const RandomColor = () => {
                 display:'flex',
                 justifyContent:'center',
                 fontSize:'2rem'
-            }}>
-                {color}
+            }}>  
+                {
+                colorType === 'hex'? <div><div>Hex Color</div><div>{color}</div></div>:<div><div>Rgb</div><div>{color}</div></div>
+              
+                }
             </div>
            
         </div>
